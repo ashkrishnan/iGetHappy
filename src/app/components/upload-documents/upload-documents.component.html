@@ -1,0 +1,113 @@
+<div class="container-fluid bg-white">
+  <div class="row">
+        <div class="col-sm-12 col-md-6">
+            <img src="assets/images/Mask-Group.png">
+        </div>
+       <div class="col-sm-12 col-md-6">
+          <div class="profile-block pt-5">
+            <form action="" [formGroup]="documentForm">
+            <div class="upload-document">
+              <h2> Upload documents for verification</h2>
+              <p>A completed profile will increase credibility amongst your peers and patients </p>
+      
+              <mat-card class="p-3 my-4 text-center">
+                <h5 class="mb-3"> Medical Registration proof</h5>
+                <div class="d-flex align-items-center justify-content-center">
+                 <i class="material-icons">
+                  photo_camera
+                </i>
+                <div class="custom-file file-input" >
+                  <input type="file" class="custom-file-input" id="inputGroupFile01" (change)="onChangeMedicalProof($event)" formControlName="medical_proof" >
+                  <label class="custom-file-label" for="inputGroupFile01">Add Registration Proof</label>
+                </div>
+                
+              </div>
+              <div class="pd-roof">{{medical_proof_name}}</div>
+              <mat-error class="top-margin">
+                <span *ngIf="documentForm.controls['medical_proof'].invalid && (documentForm.controls['medical_proof'].dirty || documentForm.controls['medical_proof'].touched) && documentForm.controls['medical_proof'].pristine">
+                  
+                 Document required 
+                </span>
+                <br><span *ngIf="medical_proof_error">Invalid file format</span>
+              </mat-error >
+            </mat-card>
+            <mat-card class="p-4 my-4 text-center">
+              <h5 class="mb-3"><span>Licensure Information  </span>
+                   <div class="state-selct">
+                      <mat-form-field class="slect-state"> 
+                     
+                      <mat-select formControlName="state" placeholder="State">
+                        <mat-option *ngFor="let state of allstate"(onSelectionChange)="changestate($event)" [value]="state">{{state}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+     
+
+              </div></h5>
+              <div class="d-flex align-items-center justify-content-center w-100">
+               <i class="material-icons">
+                photo_camera
+              </i>
+              <div class="custom-file file-input">
+                <input type="file" class="custom-file-input" id="inputGroupFile01" (change)="onChangedegreeProof($event)" formControlName="degree_proof" >
+                <label class="custom-file-label" for="inputGroupFile01">Add License ID Proof</label>
+              </div>
+          
+            </div>
+            <div class="pd-roof">
+              <span *ngFor='let url of degree_proof_name'>{{url}}</span>
+            </div>
+            
+            <mat-error class="top-margin">
+              <span *ngIf="documentForm.controls['degree_proof'].invalid && (documentForm.controls['degree_proof'].dirty || documentForm.controls['degree_proof'].touched) && documentForm.controls['degree_proof'].pristine">
+                
+                Document required
+              </span>
+              <br><span *ngIf="degree_proof_error">Invalid file format</span>
+            </mat-error >
+            <mat-error class="top-margin">
+             <span *ngIf="documentForm.controls['state'].invalid && (documentForm.controls['state'].dirty || documentForm.controls['state'].touched)  && documentForm.controls['state'].pristine">
+                 <br>State required
+                </span>
+              </mat-error >
+
+              <!-- <img *ngFor='let url of urls'  [src]="url" height="200"> <br/> -->
+          </mat-card>
+         
+          <mat-card class="p-3 my-4 text-center">
+            <h5 class="mb-3"> Government issued photo ID Proof</h5>
+            <div class="d-flex align-items-center justify-content-center">
+              <i class="material-icons">
+                photo_camera
+              </i>
+              <div class="custom-file file-input">
+                <input type="file" class="custom-file-input" id="inputGroupFile01" (change)="onChangeGovernementProof($event)" formControlName="government_proof" >
+                <label class="custom-file-label" for="inputGroupFile01">Add Photo ID Proof</label>
+              </div>
+            </div>
+            <div class="pd-roof">{{government_proof_name}}</div>
+            <mat-error class="top-margin">
+              <span *ngIf="documentForm.controls['government_proof'].invalid && (documentForm.controls['government_proof'].dirty || documentForm.controls['government_proof'].touched)  && documentForm.controls['government_proof'].pristine" >
+                
+                Document required 
+              </span>
+              <br><span *ngIf="government_proof_error">Invalid file format</span>
+            </mat-error >
+          </mat-card>
+          
+          <label>Note - Only docx, pdf, gif, jpeg, bmp, png, tif, ods, rtf are allowed</label>
+          
+          <div class="d-flex ">
+            <button role="button" class="igh-btn btn btn-lg mx-auto mt-3 igh-btn-primary" (click)="submit()"  >Save & Continue</button>
+          </div>
+      
+          <div class="d-flex justify-content-center  my-4" routerLink="/doctor-availability">
+          <a href="javascript:;">  I will do later</a>
+          </div>
+        </div>
+      </form>
+      </div>
+      
+      </div>
+
+      </div>
+      </div>

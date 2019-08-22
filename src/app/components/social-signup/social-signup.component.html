@@ -1,0 +1,225 @@
+
+<div class="container-fluid bg-white">
+    
+      <div class="row"> 
+        <div class="col-sm-12 col-md-12 col-lg-6" >
+          <img src="assets/images/Mask-Group.png">
+        </div>
+         <div class="col-sm-12 col-md-12 col-lg-6" >
+
+          <div  class="profile-block p-5">
+              <!-- <button mat-button matStepperPrevious>Back</button> -->
+              <!-- <a class="back-icon" mat-button matStepperPrevious><i class="material-icons">arrow_back</i></a> -->
+              
+              <div class="row">
+          <div class="col-sm-12">
+            <h2 class="mb-4 igh-block-title">Tell us about yourself</h2>
+          </div>
+        </div>
+              <form class="" [formGroup]="secondFrom" novalidate>
+              <div class="profil-detail">
+                  <div class="avtar-outer">
+                    <div class="img-outer">
+                      <span class="edit-icon" *ngIf="imgURL">
+                          <i class="material-icons">
+                              create
+                              </i>
+                      </span>
+                       
+                      <input type="file" (change)="onFileChanged($event)"  formControlName="profile_image"
+                      #profile_image accept="image/jpg,image/jpeg">  
+                      <div class="upload-input">
+                        <div  class="img-outer"  *ngIf="imgURL"  [ngStyle]="{ 'background-image': 'url(' + imgURL + ')'}">
+                            <!-- <img [src]="imgURL"> -->
+                        </div>
+                        <div *ngIf ="imgURL == ''" >
+                          <i class="material-icons text-center">
+                            add_circle_outline
+                          </i>
+                          <p>upload photo</p>
+                          
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mat-error" *ngIf="secondFrom.controls['profile_image'].invalid && (secondFrom.controls['profile_image'].dirty || secondFrom.controls['profile_image'].touched) && secondFrom.controls['profile_image'].errors.required && secondFrom.controls['profile_image'].pristine">
+                                Image required
+                    </div>
+                    <div class="mat-error" *ngIf="imageError">
+                        Only jpeg or jpg allowed
+                      </div>
+                  </div>
+                <div class="profile-name">
+                    <div class="input-title-slect">
+                    <mat-form-field class="name-prefix">
+                        <mat-select class='prefix' matNativeControl required  formControlName="nameprefix"
+                        #nameprefix  [(ngModel)]="defaultSelected">
+                          <mat-option value="Dr">Dr</mat-option>
+                          <mat-option value="Mr">Mr</mat-option>
+                          <mat-option value="Mrs">Mrs</mat-option>
+                          <mat-option value="Ms">Ms</mat-option>
+                          <mat-option value="Jr">Jr</mat-option>
+                          <mat-option value="Sr">Sr</mat-option>
+                        </mat-select >
+                    </mat-form-field>
+                 
+                    <mat-form-field class="example-full-width">
+                     <input matInput placeholder="First Name" formControlName="firstname"
+                      #firstname [ngModel]='firstName' maxlength="30">
+                  
+                       
+                        <mat-error *ngIf="secondFrom.controls['firstname'].invalid && (secondFrom.controls['firstname'].dirty || secondFrom.controls['firstname'].touched)">
+                          <span *ngIf="secondFrom.controls['firstname'].errors.required">
+                              Firstname is required.
+                          </span>
+                          <span *ngIf="secondFrom.controls['firstname'].errors.minlength">
+                            Minimum 3 characters required.
+                          </span>
+                        </mat-error >
+                    </mat-form-field>
+                  </div>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Last Name" formControlName="lastname"
+                        #lastname [ngModel]='lastName' maxlength="30">
+                        <mat-error *ngIf="secondFrom.controls['lastname'].invalid && (secondFrom.controls['lastname'].dirty || secondFrom.controls['lastname'].touched)">
+                          <span *ngIf="secondFrom.controls['lastname'].errors.required">
+                              Lastname is required.
+                          </span>
+                          <span *ngIf="secondFrom.controls['lastname'].errors.minlength">
+                            Minimum 3 characters required.
+                          </span>
+                        </mat-error >
+                        
+                      </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                      <!-- <input matInput placeholder="Your Profession" formControlName="profession" -->
+                      <mat-label>Your Profession</mat-label>
+                      <mat-select formControlName="profession" [(ngModel)]="selectedProfession" 
+                      #profession>
+                        <mat-option *ngFor="let proofs of professions" [value]="proofs" >
+                            {{proofs}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error>
+                          <span *ngIf="secondFrom.controls['profession'].invalid && (secondFrom.controls['profession'].dirty || secondFrom.controls['profession'].touched)">
+                              Profession is required.
+                          </span>
+                        </mat-error >
+                        
+                    </mat-form-field>
+                  <!-- <div *ngIf="selectedProfession == 'OTHER'">
+                      <input type="text" formControlName="professionother"  ngModel>
+                  </div> -->
+
+                  <mat-form-field class="example-full-width" *ngIf="selectedProfession == 'OTHER'">
+                    <input matInput placeholder="Enter Profession" formControlName="professionother" maxlength="50">
+                    <mat-error>
+                      <span *ngIf=" secondFrom.controls['professionother'].invalid && (secondFrom.controls['professionother'].dirty || secondFrom.controls['professionother'].touched)">
+                          Minimum 3 characters required.
+                      </span>
+                      <!-- <span *ngIf="secondFrom.controls['professionother'].errors.minlength">
+                        Minimum 3 characters required.
+                      </span> -->
+                    </mat-error >
+                  </mat-form-field>
+                   
+                </div>
+              </div>
+            </form>
+              <form class="" [formGroup]="thirdFrom" novalidate>
+              <div class="profile-select">
+                
+                <mat-form-field>
+                  <mat-label>Your Speciality</mat-label>
+                  <mat-select formControlName="speciality" [(ngModel)]="selectedSpeciaility"
+                  #speciality>
+                      <mat-option *ngFor="let category of specialization" [value]="category">
+                        {{category}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error>
+                      <span *ngIf="thirdFrom.controls['speciality'].invalid && (thirdFrom.controls['speciality'].dirty || thirdFrom.controls['speciality'].touched)">
+                          Speciality is required.
+                      </span>
+                    </mat-error >
+                </mat-form-field>
+                <!-- <div *ngIf="selectedSpeciaility == 'OTHER'">
+                  <input type="text" formControlName="specialityother" ngModel>
+              </div> -->
+
+              <mat-form-field class="example-full-width" *ngIf="selectedSpeciaility == 'OTHER'">
+                <input matInput placeholder="Enter Speciality" formControlName="specialityother" maxlength="50">
+                <mat-error *ngIf="thirdFrom.controls['specialityother'].dirty">
+                  <span *ngIf="thirdFrom.controls['specialityother'].touched">
+                      Minimum 3 characters required.
+                  </span>
+                  
+                </mat-error >
+              </mat-form-field>
+
+
+              </div>
+              <div class="profile-slider my-3">
+                  <div class="slider-result">
+                   <span class="result-no">{{sliderValue}}  </span>
+                   Years in Experience
+                  </div>
+                 <mat-slider min="1" max="20" [(ngModel)]="sliderValue" [step]="0.1" (change)="onChange()" formControlName="experience"
+                 #experience>
+                </mat-slider>
+                 
+              </div>
+              <div class="tag- mt-3">
+                <div class="card">
+                  <div class="card-header">
+                    What are your Language Preferences
+                  </div>
+                  <div class="card-body">
+                    <mat-form-field>
+                      <mat-chip-list #chipList >
+                        <mat-chip
+                          *ngFor="let lang of language"
+                          [selectable]="selectable"
+                          [removable]="removable"
+                          (removed)="remove(lang)">
+                          {{lang}}
+                          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                        </mat-chip>
+                        <input
+                         
+                          #fruitInput
+                          [formControl]="langCtrl"
+                          [matAutocomplete]="auto"
+                          [matChipInputFor]="chipList"
+                          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                          [matChipInputAddOnBlur]="addOnBlur"
+                          (matChipInputTokenEnd)="add($event)" maxlength="30">
+                      </mat-chip-list>
+                      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                        <mat-option *ngFor="let fruit of filteredFruits | async "  [value]="fruit">
+                          {{fruit}}
+                        </mat-option>
+                      </mat-autocomplete>
+                     
+                      <mat-error>
+                          <span *ngIf="langError">
+                              Language is required.
+                          </span>
+                        </mat-error >
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            
+              <div class="d-flex ">
+                 <button role="button" class="igh-btn btn btn-lg mx-auto mt-5 igh-btn-primary"  (click) = "signup()">Save & Continue</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+        <!-- <button mat-button mat-raised-button color="primary" matStepperNext>Next</button>          
+        <button mat-button mat-raised-button color="" matStepperPrevious>Back</button>         -->
+        <!-- <button mat-button mat-raised-button color="primary"  >Done</button>   -->
+    
+</div>

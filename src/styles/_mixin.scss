@@ -1,0 +1,6 @@
+// Flex
+@mixin flex{
+  display: flex;
+  display: -ms-flex;
+  display: -webkit-flex;
+}

@@ -1,0 +1,366 @@
+<div class="main-content-inner">
+<div class="profile-dashboard">
+  <mat-card>
+    <div class="row d-flex align-items-center">
+      <div class="col-md-5">
+        <div class="profile-box text-center">
+          <mat-card-header class="d-flex align-items-center">
+            <div mat-card-avatar class="example-header-image" [ngStyle]="{ 'background-image': 'url(' + image + ')'}"></div>
+            <mat-card-title><span [ngClass]="(firstName.length > 10)?'small-font':''"> {{name_prefix}}.{{firstName | titlecase}}</span></mat-card-title>
+          </mat-card-header>
+          <div class="d-flex py-2 align-items-center">
+            <button _ngcontent-uai-c3="" class="igh-btn status-btn igh-btn-white" type="submit">Online</button>
+            <p class="mb-0">Mandatory Details Missing</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+       <div class="profile-box text-center">
+        <div class="profile-slider">
+          <div class="slider-result">
+           <span class="result-no">56% </span>
+           Profile Complete
+         </div>
+         <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+       </div>
+     </div>
+   </div>
+   <div class="col-md-3">
+     <div class="profile-box text-center">
+      <div class="slider-result ">
+       <i class="material-icons">
+        error_outline
+      </i> <span class="result-no">4 </span>
+      Pending Mandatory Fields
+    </div>
+    <p>Complete these fields to make your profile go live</p>
+  </div>
+</div>
+</div>
+</mat-card>
+
+
+
+
+<div class="profile-details my-3">
+ <mat-card class="p-0">
+  <mat-tab-group>
+    <mat-tab>
+      <div class="tab-heading">
+       <ng-template mat-tab-label>
+    <span>  Professional & Documents Info</span> <mat-icon>error_outline</mat-icon>
+    </ng-template>
+    </div>
+      <div class="content-outer">
+        <form [formGroup]="registerForm" novalidate>
+        <div class="p-3">
+          <h5 class="mb-5">Professional Details </h5>
+          <div class="row">
+            <div class="col-xl-2 text-center">
+              <div class="avtar-outer ">
+                <div class="img-outer">
+                    <input type="file" (change)="onFileChanged($event)"  formControlName="profile_image"
+                    #profile_image accept="image/jpg,image/jpeg,image/png"> 
+                  <div class="upload-input">
+                    <div>
+                      <img [src]="image" class="img-outer" >
+                      <p class="change-inut"> Change</p>
+                    </div>
+                    <div *ngIf ="imgURL == ''" >
+                      <i class="material-icons text-center">
+                        add_circle_outline
+                      </i>
+                      <p>upload photo</p>
+                      <div *ngIf="registerForm.controls['profile_image'].invalid && (registerForm.controls['profile_image'].dirty || registerForm.controls['profile_image'].touched)" class="errors-msg">
+                        <div *ngIf="registerForm.controls['profile_image'].errors.required">
+                          Profile image is required.
+                        </div>
+                        
+                      </div>
+                      
+                    </div>
+                    <div class="errors-msg pic-error" *ngIf="imageError">
+                        Only jpeg, jpg or png allowed
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-10">
+              <div class="row">
+               <div class="col-sm-6">
+                 <label>Full Name</label>
+                 <mat-form-field appearance="outline" >
+                  <input  type="text" matInput [value]="firstName" formControlName="firstName"  [ngModel] ='firstName' maxlength="30">
+                  <mat-error *ngIf="registerForm.controls['firstName'].invalid && (registerForm.controls['firstName'].dirty || registerForm.controls['firstName'].touched)">
+                      <span *ngIf="registerForm.controls['firstName'].required">
+                          Firstname is required.
+                      </span>
+                      <span *ngIf="registerForm.controls['firstName'].errors.minlength">
+                          Minimum 3 characters required.
+                        </span>
+                  </mat-error >
+
+                  
+                </mat-form-field>
+              </div>
+              <div class="col-sm-6">
+                <label>Last Name</label>
+                <mat-form-field appearance="outline">
+                 <input  type="text" matInput [value]="lastName" maxlength="30" formControlName="lastName" [ngModel] ='lastName'>
+                 <mat-error *ngIf="registerForm.controls['lastName'].invalid && (registerForm.controls['lastName'].dirty || registerForm.controls['lastName'].touched)">
+                     <span *ngIf="registerForm.controls['lastName'].required">
+                         Lastname is required.
+                     </span>
+                     <span *ngIf="registerForm.controls['lastName'].errors.minlength">
+                        Minimum 3 characters required.
+                      </span>
+                 </mat-error >
+
+                
+
+               </mat-form-field>
+             </div>
+              <div class="col-sm-6">
+                <label>Speciality</label>
+                <mat-form-field appearance="outline">
+                  <mat-select [placeholder]="speciality" formControlName="speciality" [(ngModel)]='speciality'>
+                      <mat-option *ngFor="let category of specialization"  [value]="category">
+                          {{category}}
+                        </mat-option>
+                  </mat-select>
+                  
+                </mat-form-field>
+                <mat-form-field class="example-full-width" *ngIf="speciality == 'OTHER'">
+                  <input matInput placeholder="Enter Speciality" formControlName="specialityother" maxlength="30">
+                  <mat-error>
+                      <span *ngIf=" registerForm.controls['specialityother'].invalid && (registerForm.controls['specialityother'].dirty || registerForm.controls['specialityother'].touched)">
+                          Minimum 3 characters required.
+                      </span>
+                      <!-- <span *ngIf="secondFrom.controls['professionother'].errors.minlength">
+                        Minimum 3 characters required.
+                      </span> -->
+                    </mat-error >
+                </mat-form-field>
+              </div>
+              <div class="col-sm-6">
+                <label>Profession</label>
+                <mat-form-field appearance="outline">
+                  <mat-select formControlName="profession" [placeholder]="profession"  [(ngModel)] ='profession'>
+                    <mat-option *ngFor="let proofs of professions" [value]="proofs" >
+                        {{proofs}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>
+                      <span *ngIf="registerForm.controls['profession'].invalid && (registerForm.controls['profession'].dirty || registerForm.controls['profession'].touched)">
+                          Profession is required.
+                      </span>
+                  </mat-error >
+                </mat-form-field>
+                <mat-form-field class="example-full-width" *ngIf="profession == 'OTHER'">
+                  <input matInput placeholder="Enter Profession" formControlName="professionother" maxlength="30">
+                  <mat-error>
+                      <span *ngIf=" registerForm.controls['professionother'].invalid && (registerForm.controls['professionother'].dirty || registerForm.controls['professionother'].touched)">
+                          Minimum 3 characters required.
+                      </span>
+                    </mat-error >
+                </mat-form-field>
+              </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="profile-slider my-3">
+          <div class="slider-result">
+           <span class="result-no">{{sliderValue}}  </span>
+           Years in Experience
+          </div>
+         <mat-slider min="1" max="20" [value]="sliderValue" [(ngModel)]="sliderValue" [step]="0.1" (change)="onChange($event)" formControlName="experience"
+         #experience>
+        </mat-slider>
+         
+      </div>
+      <!-------------------row-starts-------------->
+      <div class="row">
+        <div class="col-sm-12">
+         <div class="tag- mt-3">
+          <div class="card">
+            <div class="card-header">
+              What are your Language Preferences
+            </div>
+            <div class="card-body">
+              <mat-form-field>
+                  
+                  <mat-chip-list #chipList  >
+                    <mat-chip
+                    *ngFor="let lang of language"
+                    [selectable]="selectable"
+                    [removable]="removable"
+                    (removed)="remove(lang)">
+                    {{lang}}
+                      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                    </mat-chip>
+                    <input
+                     
+                      #fruitInput
+                      [formControl]="langCtrl"
+                      [matAutocomplete]="auto"
+                      [matChipInputFor]="chipList"
+                      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                      [matChipInputAddOnBlur]="addOnBlur"
+                      (matChipInputTokenEnd)="add($event)" maxlength="30">
+                  </mat-chip-list>
+                  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                    <mat-option *ngFor="let fruit of filteredFruits | async "  [value]="fruit">
+                      {{fruit}}
+                    </mat-option>
+                  </mat-autocomplete>
+                  
+                  <mat-error>
+                      <span *ngIf="langError">
+                          Language is required.
+                      </span>
+                      
+                  </mat-error >
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <!-------------------row-ends-------------->
+    <!-------------------row-starts-------------->
+    <div class="row my-3 py-2">
+      <div class="col-sm-12 upload-document">
+        <h5>Upload Documents </h5>
+        <div class="row">
+          <div class="col-sm-4">
+            <mat-card class="px-4 pt-4 my-4 text-center h-100 pb-0">
+              <h6 class="mb-3 h-25"> Medical Registration Proof</h6>
+              <div class="d-flex align-items-center justify-content-center">
+               <i class="material-icons">
+                photo_camera
+              </i>
+              <div class="custom-file file-input">
+                <input type="file" class="custom-file-input" id="inputGroupFile01" (change)="onChangeMedicalProof($event)" [ngModel]="medical_proof" >
+                <label class="custom-file-label" for="inputGroupFile01">Add Registration Proof</label>
+              </div>
+            </div>
+            
+          </mat-card>
+          <div class="file-name" *ngIf="medical_proof !== ''">  </div>
+          <br><mat-error><span *ngIf="medical_proof_error">Invalid file format </span></mat-error>
+        </div>
+        <div class="col-sm-4">
+          <mat-card class="p-4 my-4 text-center h-100 pb-0">
+            <h6 class="mb-3 h-25"> Degree Proof</h6>
+            <div class="d-flex align-items-center justify-content-center">
+             <i class="material-icons">
+              photo_camera
+            </i>
+            <div class="custom-file file-input">
+              <input type="file" class="custom-file-input" id="inputGroupFile01" (change)="onChangedegreeProof($event)">
+              <label class="custom-file-label" for="inputGroupFile01">Add Qualification Proof</label>
+            </div>
+          </div>
+        </mat-card>
+        <div class="file-name" *ngIf="degree_proof !== ''"></div>
+      </div>
+      <div class="col-sm-4">
+       <mat-card class="px-4 pt-4 my-4 text-center h-100 pb-0">
+        <h6 class="mb-3 h-25">Government issued photo ID Proof</h6>
+        <div class="d-flex align-items-center justify-content-center">
+         <i class="material-icons">
+          photo_camera
+        </i>
+        <div class="custom-file file-input">
+          <input type="file" class="custom-file-input" id="inputGroupFile01" (change)="onChangeGovernementProof($event)" >
+          <label class="custom-file-label" for="inputGroupFile01">Add Qualification Proof</label>
+        </div>
+      </div>
+    </mat-card>
+    <div class="file-name" *ngIf="government_proof !== ''"></div>
+  </div>
+
+</div>
+<div class="d-flex justify-content-end">
+  <button role="button" class="igh-btn btn btn-lg mt-5 igh-btn-primary"  [disabled]="registerForm.controls['firstName'].invalid || registerForm.controls['lastName'].invalid" (click) = "updateUser()">Update</button>
+</div>
+</div>
+</div>
+<!-------------------row-ends-------------->
+
+
+</div>
+</form>
+</div>
+
+</mat-tab>
+<mat-tab> 
+   <div class="tab-heading">
+   <ng-template mat-tab-label>
+    <span> Services & Packages</span> <mat-icon>error_outline</mat-icon>
+    </ng-template>
+  </div>
+  <div class="content-outer">
+    <div class="p-3">
+    Coming Soon
+    </div>
+  </div>
+</mat-tab>
+<mat-tab>
+   <div class="tab-heading">
+  <ng-template mat-tab-label>
+      <span>Practice Details & Bank Details</span> <mat-icon class="clr-green">check_circle_outline</mat-icon>
+    </ng-template>
+  </div>
+  <div class="content-outer">
+    <div class="p-3">
+    Coming Soon
+  </div>
+  </div>
+</mat-tab>
+<mat-tab>
+   <div class="tab-heading">
+  <ng-template mat-tab-label>
+    <span>Team Members</span> <mat-icon></mat-icon>
+    </ng-template>
+  </div>
+  <div class="content-outer">
+    <div class="p-3">
+    Coming Soon
+  </div>
+  </div>
+</mat-tab>
+<mat-tab>
+   <div class="tab-heading">
+  <ng-template mat-tab-label>
+    <span> Your Holidays</span> <mat-icon></mat-icon>
+    </ng-template>
+  </div>
+  <div class="content-outer">
+    <div class="p-3">
+    Coming Soon
+  </div>
+  </div>
+</mat-tab>
+<mat-tab>
+   <div class="tab-heading">
+    <ng-template mat-tab-label>
+     Refer & Invite <mat-icon></mat-icon>
+    </ng-template>
+  </div>
+  <div class="content-outer">
+    <div class="p-3">
+    Coming Soon
+  </div>
+  </div>
+</mat-tab>
+</mat-tab-group>
+
+</mat-card>
+</div>
+
+</div>
+</div>

@@ -1,0 +1,88 @@
+.profile-block{
+  padding:20px 90px;
+}
+
+
+
+.main-contant{
+  background-color:#fff;
+}
+.upload-document{
+  .material-icons{
+   color: #33BEE0;
+ }
+ h2{
+  font-size: 28px;
+  line-height: 33px;
+  color: #000000;
+}
+p{
+  font-size: 20px;
+  line-height: 23px;
+
+  color: #999999;
+
+}
+
+.file-input{
+  width: 100%;
+  max-width: 208px;
+ .custom-file-input:focus~.custom-file-label{
+ box-shadow:none;
+ }
+  .custom-file-label{
+    border: none;
+    color: #33BEE0;
+    font-size: 18px;
+    &:after{
+      display: none;
+    }
+  }
+}
+}
+
+.mat-card{
+  position: relative;
+background: #FFFFFF;
+box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2) !important;
+border-radius: 10px;
+h5{
+  font-size: 18px;
+line-height: 21px;
+text-align: center;
+color: #444444;
+}
+.state-selct{
+  position: absolute;
+  font-size: 14px;
+  right: 10px;
+  top: 9px;
+  width: 100%;
+  max-width: 100px;
+  text-align: left;
+  color: #999999;
+  .mat-label{
+    font-size: 12px;
+    color: #444444;
+  }
+  .slect-state{
+    width: 100px;
+  }
+
+}
+}
+
+.igh-btn[disabled]{ cursor: not-allowed; }
+
+.pd-roof {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  color: #6b6a6a;
+}
+
+.top-margin{
+margin-top:10px;
+}
+
+

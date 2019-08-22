@@ -1,0 +1,180 @@
+.main-outer {
+	display: flex;
+	background-color: #e5e5e5;
+	/*side-bar-css-end*/
+	.side-bar {
+		width: 209px;
+		background: #101F32;
+		.side-bar-inner{
+			.logo{
+				justify-content:  center;
+				display: flex;
+				padding: 10px 0;
+				border-bottom: 1px solid #C4C4C4;
+			}
+			.first-list{
+				h4{
+					font-size: 16px;
+					line-height: 19px;
+					display: flex;
+					align-items: center;
+					color: #DADADA;
+					opacity: 0.89;
+					padding: 15px 13px;
+					font-family: Roboto;
+				}
+				ul{
+					padding: 0;
+					li{
+						a{
+							display: flex;
+							align-items: center;
+							padding: 15px 13px;
+							color: #DADADA;
+							i{
+								margin-right: 12px;
+								color: #DADADA;
+							}
+							&:hover{
+								text-decoration: none;
+								background: #1F334D;
+								border-radius: 4px;
+							}
+						}
+					}
+				}
+			}
+			.br-tp{
+				border-top: 1px solid #C4C4C4;
+			}
+		}
+	}
+	/*side-bar-css-end*/
+	/*main-content-css-start*/
+	.main-contant{
+		// width: calc(100% - 209px);
+    // margin-left: 209px
+		width: 100%;
+		.main-content-inner{
+			width: 100%;
+			padding: 30px 15px;
+			header{
+				background: #FFFFFF;
+				box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.14);
+				.search-outer{
+					display: flex;
+					align-items: center;
+					border: 1px solid #666666;
+					border-radius: 4px;
+					margin: 0 10px 0 0;
+					min-width: 350px;
+					justify-content: space-between;
+					background-color:  #F4F4F4;
+					.form-control{
+						border:none;
+						width: 100%;
+						background:  #F4F4F4;
+					}
+					.material-icons{
+						border-left: 0.5px solid #666666;
+						padding: .375rem;
+						color: #444;
+					}
+				}
+				.add-client-btn{
+					height: 40px;
+					min-width: 130px;
+				}
+				.mat-card-title{
+					font-size: 16px;
+				}
+			}
+			.page-content{
+
+				.content-outer {
+					background: #ffff;
+					box-shadow: 0 0 10px rgba(0,0,0,.25);
+					padding: 30px;
+					border-radius: 6px;
+					margin: 20px 15px;
+				}
+			}
+		}
+	}
+	/*main-content-css-end*/
+
+
+	/*Tabs-css*/
+	.mat-tab-group.mat-primary{
+		width: 100%;
+		.mat-tab-label{
+			font-size: 20px;
+			line-height: 21px;
+			color:  #333333;
+			height: 55px;
+		}
+		.mat-ink-bar{
+			/*background-color:  #548CE7 !important;*/
+		}
+		label{
+			display: block;
+			color: #666666;
+			font-size: 14px;
+		}
+	}
+	/*Tabs-css*/
+
+	/*input-csss*/
+	.mat-form-field{
+		width: 100%;
+	}
+
+
+	/*input-css*/
+
+
+	/*profile-dashboard*/
+	.profile-dashboard{
+		padding: 20px;
+		color: #484B67;
+		.result-no{
+			font-size: 26px;
+			font-weight: 500;
+		}
+		.material-icons{
+			color:#E2574C;
+			padding: 6px;
+		}
+		p{
+			font-size: 14px;
+			line-height: 16px;
+			text-align: center;
+
+			color: #6F6F6F;
+		}
+		.mat-card-avatar{
+			height: 100px;
+			width: 100px;
+		}
+		.mat-card-title{
+			font-size: 26px;
+			line-height: 30px;
+			text-align: center;
+			color: #484B67;
+		}
+		.status-btn{
+			line-height: normal;
+			min-width: 100px;
+			font-weight: 500;
+			background: green;
+			color: #fff;
+			border:none;
+			margin: 0 5px;
+		}
+	}
+}
+
+.example-header-image {
+	background-image: url(https://material.angular.io/assets/img/examples/shiba1.jpg);
+	background-size: cover;
+}

@@ -1,0 +1,68 @@
+<section class="igh-loginpage enertia-theme">
+
+  <div class="igh-login-left">
+    <a href="" class="igh-login-left-logo"><img src="assets/images/logo-white.svg" alt="logo"></a>
+<h1 class="igh-login-left-text">Provides full suite of tools for <br> Emotional and Behavioral Health and <br> Wellness </h1>
+  </div>
+<div class="igh-login-sidebar">
+  <app-block-title >
+     
+  </app-block-title>
+  <h2 class="igh-block-title">Welcome to iGetHappy</h2>
+  <form class="igh-form igh-login-form" [formGroup]="angForm" novalidate>
+    <div class="igh-form-block">
+      <label class="igh-form-block-label">Email Address</label>
+      <input class="igh-form-block-input transparent" type="text" placeholder="Enter Email ID"  formControlName="email" #email [value]="userEmail"/>
+      <div *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="errors-msg">
+        <div *ngIf="angForm.controls['email'].errors.required">
+          Email is required.
+        </div>
+        <div *ngIf="angForm.controls['email'].errors.email || angForm.controls['email'].errors.pattern">Email must be a valid</div>
+      </div>
+
+    </div>
+    <div class="igh-form-block">
+      <label class="igh-form-block-label">Password</label>
+      <input class="igh-form-block-input transparent" type="password" placeholder="Enter Password" formControlName="password"
+      #password/>
+      <div *ngIf="angForm.controls['password'].invalid && (angForm.controls['password'].dirty || angForm.controls['password'].touched)"  class="errors-msg">
+        <div *ngIf="angForm.controls['password'].errors.required">
+          Password is required.
+        </div>
+      </div>
+    </div>
+  </form>
+
+  
+
+  <div class="igh-form-forgot">
+    <div class="igh-checkbox form-remember">
+      <!-- <input type="checkbox" name="remember" id="rememberme"> -->
+      <mat-checkbox checked="true" (change)="onChange($event)">Remember me</mat-checkbox>
+      <!-- <label class="igh-checkbox-label" for="rememberme">Remember me</label> -->
+    </div>
+    <a class="igh-link pull-right" routerLink="/forgot-password">Forgot Password ?</a>
+  </div>
+
+  <div class="igh-btns-block space-between">
+    <button role="button" class="igh-btn igh-btn-primary"  type="submit" [disabled]="angForm.pristine || angForm.invalid" (click) = "login(email.value, password.value)">Login</button>
+    <button type="submit" class="igh-btn igh-btn-white" routerLink="/sign-up">Signup</button>
+  </div>
+  <div class="or-seprator"><span>or</span></div>
+  <div class="igh-social-btn facebook" (click)="signInWithFB()">
+    <i class="fa fa-facebook" ></i>
+    Continue with Facebook
+  </div>
+  <div class="igh-social-btn google-plus" (click)="signInWithGoogle()">
+    <i class="fa fa-google-plus"></i>
+    Continue with Google
+  </div>
+
+  <!-- <a  routerLink="/terms-condition" target="_blank" class="igh-form-termlink"><i class="fa fa-check-square-o" ></i> Terms & Conditions</a> -->
+  <div class="termConditions">
+    <mat-checkbox class="example-margin" [(ngModel)]="terms_condition" (change)="onChangeTermCondition($event)"></mat-checkbox>
+    <a  routerLink="/terms-condition" target="_blank" class="term-link"> Terms & Conditions</a>
+  </div>
+
+</div>
+</section>

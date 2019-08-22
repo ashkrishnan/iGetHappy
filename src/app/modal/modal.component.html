@@ -1,0 +1,13 @@
+
+<div mat-dialog-content class="ref-code">
+  <p>Enter your referral code</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="ref" (input)="checkReferalCharacters($event)" maxlength="15">
+  </mat-form-field>
+  
+</div>
+<span *ngIf="refCheck" class="" [style.color]="'red'">Not more then 15 characters</span>
+<div mat-dialog-actions>
+  <!-- <button mat-button (click)="onNoClick()">Close</button> -->
+  <button mat-button class="igh-btn btn-block igh-btn-primary"  [mat-dialog-close]="ref" cdkFocusInitial >Submit</button>
+</div>

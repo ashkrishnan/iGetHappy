@@ -1,0 +1,71 @@
+/*main-content-css-start*/
+.main-contant{
+	width: 100%;
+	.main-content-inner{
+		width: 100%;	
+	}
+
+}
+/*main-content-css-end*/
+/*Tabs-css*/
+.mat-tab-group.mat-primary{
+	width: 100%;
+	.mat-form-field-infix{
+		height: 54px;
+		padding: .5em 0;
+	} 
+	.mat-tab-label{
+		font-size: 20px;
+		line-height: 21px;
+		color:  #333333;
+		height: 55px;
+	}
+	label{
+		display: block;
+		color: #666666;
+		font-size: 14px;
+	}
+
+}
+/*Tabs-css*/
+
+.page-content{
+	.content-outer {
+		margin: 20px 0;
+		.forget-pswrd{
+			color: #548CE7;
+			font-family: Roboto;
+			font-style: normal;
+			font-weight: 500;
+			font-size: 14px;
+			line-height: 16px;
+			margin-top: 20px;
+			width: 100%;
+			display: inline-block;
+		}
+	}
+}
+
+/**************input-csss************/
+.mat-form-field.mat-form-field-appearance-outline{
+	width: 100%;
+	.mat-form-field-infix{
+		padding: 0.5em 0 !important;
+		height: 52px  !important;
+		line-height: normal;
+	
+	} 
+	
+}
+
+/***********input-css**********/
+
+/deep/.mat-form-field-flex{
+	min-height: 52px;
+}
+
+/deep/.mat-form-field-appearance-outline .mat-form-field-infix{
+	padding: 0.5em 0;
+}
+
+.igh-btn[disabled]{ cursor: not-allowed; }

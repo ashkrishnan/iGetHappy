@@ -1,0 +1,111 @@
+.doctor-img{
+	img{
+		@media(max-width: 767px){
+			display: none;
+		}
+	}
+}
+
+
+
+
+.profile-block{
+	padding:20px 90px;
+	@media(max-width: 767px){
+		padding: 20px 30px;
+	}
+}
+
+
+
+.consultaion{
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	padding: 40px 0;
+	h2{
+		font-size: 28px;
+		line-height: 33px;
+		margin-bottom: 40px;
+	}
+	span{
+		font-size: 12px;
+		line-height: 14px;
+		color: #999999;
+	}
+	.day-check{
+		@media(max-width: 767px){
+			flex-wrap: wrap;
+		}
+	}
+	mat-checkbox{
+		font-size: 18px;
+		line-height: 21px;
+	}
+	.cosultaion-time{
+		h5{
+			font-size: 18px;
+			line-height: 21px;
+			color: #171717;
+			margin-bottom: 15px;
+		}
+		.mat-button-toggle-group{
+			width:100%;
+			.mat-button-toggle{
+				width: 100%;
+				background: #F5F5F5;
+				color: rgba(0,0,0,.4);
+				font-size: 12px;
+				line-height: 14px;
+				font-weight: 500;
+				font-family: Roboto;
+			}
+			.mat-button-toggle.mat-button-toggle-checked{
+				background:	linear-gradient(153.87deg, #548CE7 17.85%, #33BEE0 85.74%);
+				color: #fff;
+			}
+			/deep/.mat-button-toggle-appearance-standard:not(.mat-button-toggle-disabled):hover .mat-button-toggle-focus-overlay{
+				opacity: 0;
+			}
+		}
+		.time-slots{
+			padding: 25px 0;
+			.mat-form-field{
+				width: 100%;
+			}
+		}
+	}
+	.do-later{
+		color: #444;
+		font-size: 18px;
+		&:hover{
+			text-decoration:none;
+		}	
+	}
+}
+
+
+  .mat-button-toggle-checked {
+    background: #548CE7;
+    color: #fff
+  }
+  
+  .errors-msg{
+  	color: red;
+  	font-size: 14px;
+  }
+
+  .igh-btns-block{
+	  flex-wrap: wrap;
+	.igh-btn{
+	  margin-bottom:10px; 
+	}
+	@media (max-width:520px){
+	  flex-direction: column;
+	}
+  }
+  .igh-btn[disabled]{ cursor: not-allowed; }
+  .delete-icon:hover{
+	color: red;
+	cursor: pointer;
+  }

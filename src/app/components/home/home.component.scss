@@ -1,0 +1,76 @@
+.dashboard-outer{
+	width: 70%;
+	
+	h5 {
+		color: #4D555B;
+    font-size: 16px;
+		font-weight: 500;
+		margin-left: 10px;
+  }
+
+}
+.billing-cycle {
+	  margin-top: 40px;
+		margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+		padding-left: 25%;
+}
+.card-score-outer{
+	.card-socore-tittle{
+		color: #666666;
+	}
+	.card-score{
+     color: #4D555B;
+		 font-size: 24px;
+	}
+}
+.billing-score-box{
+	width:calc(100% - 30px);
+	margin-left: 30px;
+	.billing-score-graph {
+		position: absolute;
+		top: -60px;
+		left: -30px;
+	 }
+	 .billing-score {
+	     display: flex;
+	 		width: 75%;
+	     margin-left: 25%;
+	 		height: 150px;
+	     align-items: center;
+	 		.billing-score-list {
+	       width: 30%;
+	 			p{
+	 				color: #4D555B;
+	 				font-size: 14px;
+	 				font-weight: 500;
+	 				opacity: .5;
+	 			}
+	 			h3 {
+	 				font-size: 30px;
+	 			  background: -webkit-linear-gradient(#4c97e5, #33bee0);
+	 			  -webkit-background-clip: text;
+	 			  -webkit-text-fill-color: transparent;
+	 			}
+	     }
+	 }
+}
+
+
+.right-side-menu {
+    position: absolute;
+    right: 0;
+    top: 56px;
+		height:calc(100% - 56px);
+		background: #101f32;
+		max-width: 25%;
+}
+@media screen and (max-width: 1140px) {
+	.right-side-menu {
+	   display: none;
+	}
+	.dashboard-outer{
+		width: 100%;
+	}
+}

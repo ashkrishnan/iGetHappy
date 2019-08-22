@@ -1,0 +1,94 @@
+<div class="container-fluid bg-white">
+	<div class="row">
+		<div class="col-sm-12 col-md-12 col-lg-6 doctor-img">
+			<img src="assets/images/Mask-Group.png">
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-6">
+			<div class="profile-block ">
+				<form [formGroup]="form" (ngSubmit)="submit()">
+					<div class="consultaion">
+						<h2 class="igh-block-title"> When are you available for Consultation</h2>
+						<span>Availability 1</span>
+
+						<div  class=" my-2 pb-3 mb-3 position-relative">
+							<div class="d-flex w-100 day-check ">
+								<mat-checkbox class="mr-3 "  *ngFor="let item of weekDays; let i = index;"  (change)="onChange($event, i, item)">
+									{{item}}
+								</mat-checkbox >
+							</div>
+							<div class="errors-msg" *ngIf="checkdays">Please choose days of working</div>
+						</div>
+
+
+						<div class="cosultaion-time py-3">
+							<h5>Set Interval time per consultation</h5>
+							<!-- <div class="btn-group my-3  mr-2" role="group" aria-label="First group" > -->
+								<div class="position-relative pb-4">
+									<div>
+								<mat-button-toggle-group formControlName="time_slot" name="fontStyle" aria-label="Font Style" multiple="false" >
+									<mat-button-toggle  *ngFor="let item of toggleOptions;" (change)="selectionChanged($event)" [value]="item">{{item}}</mat-button-toggle>
+								</mat-button-toggle-group>
+							</div>
+								<div class="errors-msg" *ngIf="checktimeslot">Please choose time slot</div>
+								</div>
+								<!-- </div> -->
+
+
+								<div class="time-slots" formArrayName="to_from_time">
+									<div class="row position-relative" *ngFor="let item of toFromTime.controls; let pointIndex=index" [formGroupName]="pointIndex">
+										<div class="col-sm-5">
+											<mat-form-field >
+												<mat-label>From</mat-label>
+												<input matInput placeholder="From" id='time' formControlName="from"  [ngxTimepicker]="from_time" [format]="24">
+												<ngx-material-timepicker #from_time ></ngx-material-timepicker>
+											</mat-form-field>
+										</div>
+										<div class="col-sm-5">
+											<mat-form-field>
+												<mat-label>To</mat-label>
+												<input matInput placeholder="To" id='time' formControlName="to"  [ngxTimepicker]="to_time" [format]="24">
+												<ngx-material-timepicker #to_time></ngx-material-timepicker>
+												<!-- <mat-error >getErrorMessage</mat-error> -->
+											</mat-form-field>
+										</div>
+										<div class="col-sm-2 d-flex align-items-center" *ngIf="pointIndex!==0">
+											<mat-icon class='delete-icon' aria-hidden="false" (click)="deleteMoreToFromFields(pointIndex)" aria-label="Example home icon">delete_forever</mat-icon>
+										</div>
+										
+										<div class="errors-msg">
+											
+											<div  *ngIf="checktime && !checkTimeData">Please add time to all fields</div>	
+											<div *ngIf="checkTimeData">
+												<!-- <div  *ngFor="let arr of checkTimeDataArr"> -->
+													<div *ngIf="checkTimeDataArr[pointIndex]">From time should be less than To time</div>
+												<!-- </div> -->
+											</div>
+										</div>
+	
+										
+									</div>
+									
+								</div>
+
+								<div class="d-flex my-3">
+									<button type="button" (click)="addMoreToFromFields()" class="igh-btn  btn btn-block igh-btn-white">+ Add More</button>
+								</div>
+							</div>
+							<div class="d-flex align-items-center igh-form-block ">
+								<button role="button" click="submit()" class="igh-btn btn btn-lg mx-auto mt-5 igh-btn-primary">Save & Continue</button>
+								<span class="mt-5 text-dark">or</span>
+								<button role="button" click="" disabled class="igh-btn  btn igh-btn-white mx-auto mt-5">Add Consultation</button>
+							</div>
+
+							<div class="d-flex justify-content-center   my-4">
+								<a class="do-later" href="javscript:;" routerLink="/home"> I will do later</a>
+							</div>
+
+						</div>
+
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>

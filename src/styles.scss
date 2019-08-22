@@ -1,0 +1,245 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "styles/mixin.scss";
+@import "styles/variables.scss";
+@import "../node_modules/ng2-slim-loading-bar/style.css";
+@import '~ngx-toastr/toastr.css';
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i,900,900i&display=swap');
+@import "styles/material-theme.scss";
+ body{
+  font-family: 'Roboto', sans-serif;
+ }
+ .not-allowed {cursor: not-allowed;}
+ .igh-btn[disabled]{ cursor: not-allowed; }
+.main-outer {
+    min-height: 100vh;
+    position: relative;
+}
+
+.main-content-inner{
+  width: 100%;
+  padding: 30px 15px;
+  padding-left: 224px;
+}
+h2{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 42px;
+    color: #000;
+}
+.back-icon{
+  font-size: 35px;
+  color: #000;
+  i{
+    font-size: 35px;
+  }
+  &:hover{
+    color:#000;
+  }
+}
+
+
+.errors-msg {
+    position: absolute;
+    bottom: 0;
+    left: 21px;
+    font-size: 14px;
+    color: red;
+}
+
+
+/*Bootstrap Reset*/
+label{margin-bottom: 0;}
+input{outline:0;}
+button,a[role="button"]{outline:0 !important;}
+/*Title*/
+.igh-title{
+  display: block;
+font-style: normal;
+font-weight: normal;
+font-size: 32px;
+line-height: 42px;
+margin-bottom: 0;
+  &.center
+  {
+    text-align: center;
+  }
+}
+/*Form*/
+.igh-form{
+  display:block;
+  &-block{
+    display:block;
+    padding: 20px 17px;
+    &-label{
+      font-size: 12px;
+      line-height: 14px;
+      display: block;
+      color: rgba(0,0,0,0.4);
+    }
+    &-input{
+      display: block;
+      width: 100%;
+      font-size: 16px;
+      line-height: 19px;
+    }
+  }
+}
+input.transparent{
+  background:transparent;
+  border:0;
+}
+.igh-form-forgot{
+  display: flex;
+  justify-content: space-between;
+}
+.igh-form-termlink{
+  display:block;
+  font-size:18px;
+  font-weight: bold;
+  text-align: center;
+  margin:15px 0;
+  color: #000;
+}
+/*Buttons and Links*/
+.igh-link{
+  font-size: 12px;
+  color:#000;
+  cursor: pointer;
+  font-weight: 500;
+  &:hover{
+    color: #33BEE0 !important;
+    text-decoration: underline;
+  }
+}
+.igh-btns-block{
+  display:flex;
+  width:100%;
+  &.space-between{
+    justify-content: space-between;
+  }
+}
+.igh-btn{
+  line-height: 45px;
+  min-width: 165px;
+  padding:5px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  &.igh-btn-primary{
+    background: linear-gradient(153.87deg, #548CE7 17.85%, #33BEE0 85.74%);
+    color:#fff !important;
+    border:none;
+    cursor: pointer;
+  }
+  &.igh-btn-white{
+    color:#000;
+    border:1px solid #000;
+    background:white;
+  }
+  &:hover{
+    opacity: .8;
+     box-shadow: 0 0 11px rgba(33,33,33,.2); 
+  }
+}
+.btn{
+  height: 55px;
+}
+/*Custom Checkbox*/
+.igh-checkbox{
+  &-label{
+    font-size: 12px;
+    color:#000;
+    position: relative;
+    padding-left: 24px;
+    transition: all linear 0.2s;
+     cursor: pointer;
+     font-weight: 500;
+    &:before,&:after{content: "";position: absolute;left:0;top:1px;display:inline-block;transition: all linear 0.2s;}
+    &:before{
+      width:16px;
+      height:16px;
+      border:1px solid #444;
+      border-radius: 2px;
+    }
+    &:after{
+      width:10px;
+      height:10px;
+      background:transparent;
+      margin-top:3px;
+      margin-left: 3px;
+        background: linear-gradient(127.42deg, #548CE7 17.85%, #33BEE0 85.74%);
+        opacity: 0;
+    }
+  }
+input[type="checkbox"]{display:none;
+&:checked ~ label{
+  color: #33BEE0;
+  &:before{
+    border-color: #33BEE0;
+  }
+  &:after{
+    opacity: 1;
+  }
+}
+}
+}
+
+/*or seprator*/
+.or-seprator{
+  display:block;
+  position: relative;
+  text-align: center;
+  &:before{
+    content: "";
+    position: absolute;
+    width:100%;
+    background-color:rgba(0,0,0,0.3);
+    height:1px;
+    z-index: 1;
+    left: 0;
+    top:13px;
+  }
+  span{
+    position: relative;
+    display:inline-block;
+    padding-left: 18px;
+    padding-right: 18px;
+    background:#fff;
+    z-index: 2;
+    color:rgba(0,0,0,0.3);
+  }
+}
+
+/*Social Buttons*/
+.igh-social-btn{
+  display:block;
+  line-height: 45px;
+  padding:5px;
+  color:#fff;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 6px;
+  margin-top:16px;
+  cursor: pointer;
+  position: relative;
+  i.fa{
+    margin-right: 28px;
+    font-size: 20px;
+    position: absolute;
+    left: 38px;
+    top:18px;
+  }
+  &.facebook{
+    background:#4872BA;
+  }
+  &.google-plus{
+    background:#F45C4C;
+  }
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

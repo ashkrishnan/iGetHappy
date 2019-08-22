@@ -1,0 +1,48 @@
+/******header-css*********/
+header{
+	background: #FFFFFF;
+	box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.14);
+	padding-left: 209px;
+	.search-outer{
+		display: flex;
+		align-items: center;
+		border: 1px solid #666666;
+		border-radius: 4px;
+		margin: 0 10px 0 0;
+		min-width: 350px;
+		justify-content: space-between;
+		background-color:  #F4F4F4;
+		.form-control{
+			border:none; 
+			width: 100%;
+			background:  #F4F4F4;
+			&:focus{
+			box-shadow:none;
+			}
+		}
+		.material-icons{
+			border-left: 0.5px solid #666666;
+			padding: .375rem;
+			color: #444;
+		}
+	}
+	.add-client-btn{
+		height: 40px;
+		min-width: 130px;
+		    line-height: 30px;
+    font-weight: 500;
+	}
+	.mat-card-title{
+		font-size: 16px;
+	}
+}
+
+@media only screen and (max-width: 992px) {
+	ul.navbar-nav.ml-auto {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+	}
+  }
+
+/******header-css***/

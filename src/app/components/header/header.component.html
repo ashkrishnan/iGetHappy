@@ -1,0 +1,43 @@
+<header *ngIf='isLogin()'>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form class="form-inline my-2 my-lg-0">
+        <div class="search-outer"> <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> <a href="javascript:;"><i class="material-icons">search</i></a></div>
+        <button class="btn btn-outline my-2 my-sm-0 igh-btn igh-btn-white add-client-btn" type="submit">Add Client</button>
+      </form>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <mat-card-header class="d-flex align-items-center">
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title class="mb-0">{{name_prefix}}. {{firstname | titlecase}}</mat-card-title>
+          </mat-card-header>
+        </li>
+        <li class="nav-item ">
+          <button mat-button [matMenuTriggerFor]="notification"><i class="material-icons">
+            notification_important
+          </i></button>
+          <!-- <mat-menu #notification="matMenu">
+            <button mat-menu-item>Item 1</button>
+            <button mat-menu-item>Item 2</button>
+          </mat-menu> -->
+        </li>
+
+        <li class="nav-item ">
+          <button mat-button [matMenuTriggerFor]="menu">...</button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)='logout()'>Logout</button>
+            <!-- <button mat-menu-item>Item 2</button> -->
+          </mat-menu>
+        </li>
+
+      </ul>
+
+    </div>
+  </nav>
+</header>

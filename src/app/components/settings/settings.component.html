@@ -1,0 +1,92 @@
+<div class="main-content-inner">
+<div class="page-content"> 
+    <mat-tab-group>
+        
+        <mat-tab label="Change Password" *ngIf='checkSocialId'>
+        <div class="content-outer">
+            <form [formGroup]="registerForm" novalidate>
+            <mat-card>
+            <div class="row">
+            <div class="col-sm-4">
+            <label>Current Password</label>
+            <mat-form-field appearance="outline">
+                <input  type="Password" matInput placeholder="Current Password" formControlName="currentpassword">
+                <mat-error>
+                    <span *ngIf="registerForm.controls['currentpassword'].invalid && (registerForm.controls['currentpassword'].dirty || registerForm.controls['currentpassword'].touched)">
+                        Current password is required.
+                    </span>
+                </mat-error >
+            </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+            <label>&nbsp;</label>
+            <a class="forget-pswrd" href="javascript:;" routerLink="/forgot-password">Forgot Password?</a>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-sm-4">
+            <label>Enter New Password</label>
+            <mat-form-field appearance="outline">
+            <input type="Password" matInput placeholder="Enter New Password"  formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+            <mat-error>
+                <span *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched) && registerForm.controls['password'].errors.required">
+                    New password is required.
+                </span>
+                <span *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched) && registerForm.controls['password'].errors.minlength">
+                    Minimum 8 characters required.
+                </span>
+                <span *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched) && registerForm.controls['password'].errors.pattern  && !registerForm.controls['password'].errors.minlength">
+                    At least one special characters/[A-Z]/[a-z]/(0-9)
+                </span>
+            </mat-error >
+            </mat-form-field>
+        </div>
+        <div class="col-sm-4">
+            <label>Confirm Password</label>
+            <mat-form-field appearance="outline">
+            <input type="Password" matInput placeholder="Confirm Password" formControlName="confirmPassword" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
+            
+            <mat-error>
+                <span *ngIf="registerForm.controls['confirmPassword'].invalid && (registerForm.controls['confirmPassword'].dirty || registerForm.controls['confirmPassword'].touched) &&  registerForm.controls['confirmPassword'].errors.required">
+                    Confirm password is required.
+                </span>
+                <span *ngIf="registerForm.controls['confirmPassword'].invalid && (registerForm.controls['confirmPassword'].dirty || registerForm.controls['confirmPassword'].touched) &&  registerForm.controls['confirmPassword'].errors.mustMatch">
+                    New password and confirm password must match
+                </span>
+            </mat-error >
+            </mat-form-field>
+        </div>
+        </div>
+        </mat-card>
+        </form>
+    </div>
+    <div _ngcontent-wsq-c3="" class="d-flex justify-content-end px-2">
+        <button _ngcontent-dyo-c3="" class="igh-btn  btn igh-btn-white mx-2" routerLink="/home" role="button">Cancel</button>
+        <button _ngcontent-wsq-c3="" (click) = "onSubmit()" [disabled]=" registerForm.invalid" class="igh-btn btn btn-lg mx-2 igh-btn-primary" role="button">Save Changes</button>
+    </div>
+    </mat-tab>
+    <mat-tab label="Invite other Doctors"> 
+    <div class="content-outer">
+       Coming Soon
+    </div>
+    </mat-tab>
+    <mat-tab label="Notification">
+    <div class="content-outer">
+        Coming Soon
+    </div>
+    </mat-tab>
+    <mat-tab label="Help & FAQ">
+    <div class="content-outer">
+        Coming Soon
+    </div>
+    </mat-tab>
+    <mat-tab label="Terms & Privacy">
+    <div class="content-outer">
+        Coming Soon
+    </div>
+    </mat-tab>
+</mat-tab-group>
+</div> 
+</div>
+
+
